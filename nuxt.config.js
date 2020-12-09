@@ -34,7 +34,8 @@ export default {
    ** Global CSS
    */
   css: [
-    '@/assets/css/main.css'
+    '@/assets/css/main.css',
+    {src:'element-ui/lib/theme-chalk/index.css'}
   ],
   styleResources: {
     less: './assets/css/base.less'
@@ -45,7 +46,8 @@ export default {
   plugins: [
     { src: '@/plugins/tools', ssr: false },
     { src: '@/plugins/axios', ssr: false },
-    { src: '@/plugins/lodash', ssr: false }
+    { src: '@/plugins/lodash', ssr: false },
+    { src: '@/plugins/element-ui', ssr: false }
   ],
   /*
    ** Nuxt.js dev-modules
@@ -112,6 +114,7 @@ export default {
     /*
      ** You can extend webpack config here
      */
+    vendor: ['element-ui'],
     publicPath: '/scripts/',
     cache: true,
     parallel: true,

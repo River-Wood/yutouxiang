@@ -5,6 +5,7 @@
       <Sidebar-item title="标题" :title-img="articleImg" :custom-class="['bg-long']">
         <div class="content">
           <!--  -->
+          <el-button>默认按钮</el-button>
         </div>
       </Sidebar-item>
     </Sidebar>
