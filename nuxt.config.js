@@ -35,7 +35,8 @@ export default {
    */
   css: [
     '@/assets/css/main.css',
-    {src:'element-ui/lib/theme-chalk/index.css'}
+    {src:'element-ui/lib/theme-chalk/index.css'},
+    {src:'~assets/scss/index.scss', lang: 'scss' },
   ],
   styleResources: {
     less: './assets/css/base.less'
