@@ -5,10 +5,23 @@
         <li
           v-for="(item, index) in list"
           :key="index"
-          :class="[index >= list.length / 2 ? 'right' : 'left', nowName === item.name || routeName.includes(item.name) ? 'active' : '']"
-          @click="clickMenu($event, item)"
+          :class="[index >= list.length / 2 ? 'right' : 'left', nowName === item.name || routeName.includes(item.name.toLowerCase()) ? 'active' : '']"
         >
-          <span>{{ item.title }}</span>
+          <!-- <span>{{ item.title }}</span> -->
+          <el-dropdown trigger="click" placement="bottom">
+            <span class="el-dropdown-link">
+              {{ item.title }}<i v-if="item.subItems" class="el-icon-arrow-down el-icon--right"></i>
+            </span>
+            <el-dropdown-menu slot="dropdown">
+              <el-dropdown-item @click.native="clickMenu($event, subItem)" v-for="(subItem, i) in item.subItems" :key="i">
+                <span>{{subItem.title}}</span>
+              </el-dropdown-item>
+              <!-- <el-dropdown-item>狮子头</el-dropdown-item>
+              <el-dropdown-item>螺蛳粉</el-dropdown-item>
+              <el-dropdown-item>双皮奶</el-dropdown-item>
+              <el-dropdown-item>蚵仔煎</el-dropdown-item> -->
+            </el-dropdown-menu>
+          </el-dropdown>
         </li>
       </ul>
 
@@ -79,7 +92,7 @@ export default {
       e && e.preventDefault && e.preventDefault()
 
       const { nowName, subMenu, $router, _get } = this
-
+      
       if (name === nowName) {
         this.nowName = ''
         subMenu.splice(0)
