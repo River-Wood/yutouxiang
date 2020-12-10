@@ -92,7 +92,6 @@ export default {
       e && e.preventDefault && e.preventDefault()
 
       const { nowName, subMenu, $router, _get } = this
-      
       if (name === nowName) {
         this.nowName = ''
         subMenu.splice(0)

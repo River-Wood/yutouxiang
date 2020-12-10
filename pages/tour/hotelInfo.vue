@@ -5,7 +5,6 @@
       <Sidebar-item title="标题" :title-img="articleImg" :custom-class="['bg-long']">
         <div class="content">
           <!--  -->
-          123
         </div>
       </Sidebar-item>
     </Sidebar>

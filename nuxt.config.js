@@ -7,7 +7,7 @@ export default {
    ** Headers of the page
    */
   head: {
-    title: '数字沙滩',
+    title: '数字屿头',
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },

@@ -17,46 +17,48 @@
 
     <Sidebar position="Left">
 
-      <Sidebar-item title="文章轮播" :title-img="articleImg" class="article">
+      <Sidebar-item title="党员信息" :title-img="articleImg" class="article">
         <div class="sidebar-item-body">
           <div class="timeline-container">
             <client-only>
               <swiper :options="swiperYOption" class="timeline-swiper">
 
-                <swiper-slide v-for="(group, gIndex) in partyArticle" :key="gIndex">
-                  <div v-for="item in group" :key="item.id" class="timeline-item">
-
-                    <div
-                      v-if="item.publisTime && item.publisTime.length > 5 && !item.publisTime.includes(':') && moment(item.publisTime).isAfter(moment().format('YYYY-MM-DD'))"
-                      :class="['item-time', item.highlight > 0 ? 'today' : 'date']"
-                    >{{ moment(item.publisTime).format('HH:mm') }}</div>
-                    <div
-                      v-else-if="item.publisTime && item.publisTime.length > 5 && !item.publisTime.includes(':')"
-                      :class="['item-time', item.highlight > 0 ? 'today' : 'date']"
-                    >{{ moment(item.publisTime).format('MM/DD') }}</div>
-                    <div
-                      v-else
-                      :class="['item-time', item.highlight > 0 ? 'today' : 'date']"
-                    >{{ item.publisTime }}</div>
-
-                    <div class="item-body" @click="clickArticle($event, item)">
-                      <div class="item-title">
-                        <span>{{ item.title }}</span>
-                      </div>
-
-                      <div class="item-content">
-                        <div class="left">{{ item.description }}</div>
-
-                        <div class="right">
-                          <img src="@/assets/img/qrcode@2x.png">
-                        </div>
-                      </div>
-
-                    </div>
-
-                  </div>
+                <swiper-slide>
+                  <Title sub-title value="沙滩村党员性别分布" />
+                  <PieChart
+                    :pieData="[
+                      {value:21, name:'男'},
+                      {value:9, name:'女'},
+                    ]"
+                    id-name="gender-distribution"
+                  />
                 </swiper-slide>
-
+                <swiper-slide>
+                  <Title sub-title value="沙滩村党员学习分布" />
+                  <PieChart
+                    :pieData="[
+                    {value:20, name:'初中以下'},
+                    {value:7, name:'高中'},
+                    {value:3, name:'大专以上'},
+                    ]"
+                    id-name="education-distribution"
+                  />
+                </swiper-slide>
+                <swiper-slide>
+                  <Title sub-title value="沙滩村党员年龄分布" />
+                  <PieChart
+                    :pieData="[
+                    {value:3, name:'18-30岁'},
+                    {value:1, name:'31-40岁'},
+                    {value:7, name:'41-50岁'},
+                    {value:4, name:'51-60岁'},
+                    {value:8, name:'61-70岁'},
+                    {value:5, name:'71-80岁'},
+                    {value:2, name:'81-90岁'},
+                    ]"
+                    id-name="age-distribution"
+                  />
+                </swiper-slide>
                 <div slot="pagination" class="swiper-pagination" />
 
               </swiper>
@@ -65,7 +67,7 @@
         </div>
       </Sidebar-item>
 
-      <Sidebar-item title="支部委员名单" :title-img="memberImg" class="member">
+      <Sidebar-item title="支部名单" :title-img="memberImg" class="member">
         <div class="sidebar-item-body">
           <client-only>
 
@@ -73,9 +75,9 @@
               <swiper-slide v-for="(group, index) in partyBuilding" :key="index">
 
                 <div v-for="(item, gIndex) in group" :key="gIndex" class="swiper-item-child">
-                  <div class="item-title">{{ item.title }}</div>
+                  <div class="item-title">{{ item.name }}</div>
 
-                  <div>
+                  <!-- <div>
                     <div v-for="key in organizes" :key="key">
                       <div>
                         <img :src="ImgTable[key] || ''" :alt="jobTable[key]">
@@ -84,7 +86,7 @@
                       <div>{{ item[key] || '' }}</div>
 
                     </div>
-                  </div>
+                  </div> -->
 
                 </div>
 
@@ -98,7 +100,7 @@
     </Sidebar>
 
     <Sidebar position="Right" full>
-      <Sidebar-item title="党员数量" :title-img="chartImg" :custom-class="['bg-long']">
+      <!-- <Sidebar-item title="党员数量" :title-img="chartImg" :custom-class="['bg-long']">
         <div class="right-sidebar-body">
 
           <div class="padding-bottom">
@@ -199,14 +201,14 @@
           </div>
 
         </div>
-      </Sidebar-item>
+      </Sidebar-item> -->
     </Sidebar>
 
   </div>
 </template>
 
 <script>
-import { Sidebar, SidebarItem, Title, BarChart } from '@/components'
+import { Sidebar, SidebarItem, Title, BarChart, PieChart } from '@/components'
 import moment from 'moment'
 
 import { articleImg, memberImg, chartImg, zhibu, shuji } from '@/assets/img/images'
@@ -230,7 +232,8 @@ export default {
     Sidebar,
     SidebarItem,
     Title,
-    BarChart
+    BarChart,
+    PieChart
   },
 
   data () {
@@ -301,7 +304,50 @@ export default {
       articleCount: 5,
 
       partyBuilding: [
-        new Array(5).fill(1).map((i, k) => ({ name: (Math.random() * 10000000).toFixed(0), id: k }))
+        [
+          {
+            name: '屿头乡机关第一党支部'
+          },
+          {
+            name: '屿头乡机关第二党支部'
+          },
+          {
+            name: '屿头乡机关退休党支部'
+          },
+          {
+            name: '屿头乡白石村党支部'
+          },
+          {
+            name: '屿头乡大田村党支部'
+          },
+          {
+            name: '屿头乡金廊村党支部'
+          },
+          {
+            name: '屿头乡联一村党支部'
+          },
+          {
+            name: '屿头乡两岸村党支部'
+          },
+          {
+            name: '屿头乡沙滩村党支部'
+          },
+          {
+            name: '屿头乡屿头村党支部'
+          },
+          {
+            name: '屿头乡布袋山村党总支'
+          },
+          {
+            name: '屿头乡三联村党总支'
+          },
+          {
+            name: '屿头乡上凤村总党支'
+          },
+          {
+            name: '屿头乡兴安村党总支'
+          }
+        ]
       ],
       buildingCount: 6,
 
