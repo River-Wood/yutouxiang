@@ -53,3 +53,11 @@ ul {
   color: #fff;
   background-color: #35495e;
 }
+
+.el-dropdown {
+  color: #FFFFFF !important;
+}
+
+.el-dropdown-menu__item {
+  color: #FFFFFF !important;
+}
