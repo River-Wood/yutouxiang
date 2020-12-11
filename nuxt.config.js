@@ -21,9 +21,9 @@ export default {
       { rel: 'stylesheet', type: 'text/css', href: '/player.css' }
     ],
     script: [
-      { src: 'scripts/adapter.js' },
-      { src: 'scripts/webRtcPlayer.js' },
-      { src: 'scripts/app.js' }
+      { src: '/api_scripts/adapter.js' },
+      { src: '/api_scripts/webRtcPlayer.js' },
+      { src: '/api_scripts/app.js' }
     ]
   },
   /*
@@ -105,9 +105,9 @@ export default {
       )
     }
   },
-  generate: {
-    dir: '../TaiZhouRunner/taizhouServe'
-  },
+  // generate: {
+  //   dir: '../TaiZhouRunner/taizhouServe'
+  // },
   /*
    ** Build configuration
    */

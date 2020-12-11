@@ -13,6 +13,7 @@
 </template>
 
 <script>
+/*eslint no-undef: 1 */
 import { NavigationBar } from '@/components'
 import { navList, mainSubMenu } from './navList'
 
@@ -26,6 +27,14 @@ export default {
       navList,
       mainSubMenu,
       sidebarShow: false
+    }
+  },
+
+  mounted () {
+    // 初始化视频播放
+    // eslint-disable-next-line
+    if ( typeof load === "function") {
+      load()
     }
   },
 

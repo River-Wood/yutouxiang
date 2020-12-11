@@ -180,14 +180,16 @@ export default {
   nav {
     // .Width(1429.5);
     // .wHeight(63);
-    .hHeight(90);
+    // .hHeight(90);
     .Background('~assets/img/nav/main_bg@2x.png');
     .TransformTranslate(-50%, 0, 0);
 
     position: fixed;
     top: 0;
     left: 50%;
-    width: 100%;
+    // width: 100%;
+    width: 100vw;
+    height: 4vw;
     z-index: 10000;
     user-select: none;
     color: @navColor;
@@ -215,8 +217,9 @@ export default {
         .Flex;
         .Flex-center;
         // .Padding(0, 43, 0, 43);
-        .hHeight(90);
+        // .hHeight(90);
 
+        height: 4vw;
         width: 12.14vw;
         text-align: center;
         position: relative;
