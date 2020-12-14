@@ -5,6 +5,13 @@
       <Sidebar-item title="标题" :title-img="articleImg" :custom-class="['bg-long']">
         <div class="content">
           <!--  -->
+          <div class="count">
+            <span>柔川景区游客数量</span>
+            <span>
+              <span>{{ 396720 }}</span>
+              <span>人</span>
+            </span>
+          </div>
         </div>
       </Sidebar-item>
     </Sidebar>
@@ -52,5 +59,36 @@ export default {
   .hHeight(300);
 
   overflow: hidden;
+}
+
+.count {
+  .wHeight(60);
+  .Margin(23, 0, 20, 0);
+
+  background: @darkBlueOpacity;
+
+  >span {
+    color: #FAC900;
+
+    &:first-of-type {
+      .Padding(0, 52, 0 ,52);
+      .LineHeight(60);
+      color: @sidebarItemColor;
+    }
+
+    &:last-of-type {
+      .LineHeight(60);
+      .FontSize(16);
+
+      >span {
+        padding: inherit;
+
+        &:first-of-type {
+          .FontSize(36);
+        }
+      }
+
+    }
+  }
 }
 </style>
