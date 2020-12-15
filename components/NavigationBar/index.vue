@@ -6,6 +6,7 @@
           v-for="(item, index) in list"
           :key="index"
           :class="[index >= list.length / 2 ? 'right' : 'left', nowName === item.name || routeName.includes(item.name.toLowerCase()) ? 'active' : '']"
+          @click="clickMenu($event, item)"
         >
           <!-- <span>{{ item.title }}</span> -->
           <el-dropdown trigger="click" placement="bottom">
@@ -88,8 +89,12 @@ export default {
   },
 
   methods: {
-    clickMenu (e, { name = '', children = [], url = '' }) {
+    clickMenu (e, { name = '', children = [], url = '', subItems }) {
       e && e.preventDefault && e.preventDefault()
+
+      if (subItems) {
+        return
+      }
 
       const { nowName, subMenu, $router, _get } = this
       if (name === nowName) {

@@ -14,7 +14,8 @@
     <section
       v-show="show"
       :id="`${position}SideBar`"
-      :class="[`${position}-side`, full ? 'full-height' : '']"
+      :class="[full ? 'full-height' : '']"
+      :style="{[`${position.toLowerCase()}`]: `${val}px`}"
     >
       <slot />
     </section>
@@ -34,6 +35,10 @@ export default {
     full: {
       type: Boolean,
       default: false
+    },
+    val: {
+      type: Number,
+      default: 0
     }
   },
 

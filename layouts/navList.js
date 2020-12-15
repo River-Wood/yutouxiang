@@ -95,6 +95,11 @@ export const navList = [
     url: '/manage'
   },
   {
+    name: 'Home',
+    title: '综合大屏',
+    url: '/home'
+  },
+  {
     name: 'Society',
     title: '智慧民生',
     url: '/society',

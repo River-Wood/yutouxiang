@@ -33,9 +33,9 @@ export default {
   mounted () {
     // 初始化视频播放
     // eslint-disable-next-line
-    if ( typeof load === "function") {
-      load()
-    }
+    // if ( typeof load === "function") {
+    //   load()
+    // }
   },
 
   methods: {
