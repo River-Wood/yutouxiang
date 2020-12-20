@@ -1,7 +1,7 @@
 <template>
   <div class="partywork-wrapper">
 
-    <modal v-if="inited" name="qrcode" width="24.22%" height="49.17%" :pivot-y="0.4">
+    <modal name="qrcode" width="24.22%" height="49.17%" :pivot-y="0.4">
       <div>
         <p class="modal-title">
           <span>{{ articleTitle }}</span>
@@ -238,7 +238,7 @@ export default {
 
   data () {
     return {
-      inited: false,
+      inited: true,
       allYear: 2019,
       branchYear: 2019,
       yearList: [2019, 2018],

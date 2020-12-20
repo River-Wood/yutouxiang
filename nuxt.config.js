@@ -35,8 +35,8 @@ export default {
    */
   css: [
     '@/assets/css/main.css',
-    {src:'element-ui/lib/theme-chalk/index.css'},
-    {src:'~assets/scss/index.scss', lang: 'scss' },
+    { src: 'element-ui/lib/theme-chalk/index.css' },
+    { src: '~assets/scss/index.scss', lang: 'scss' }
   ],
   styleResources: {
     less: './assets/css/base.less'
@@ -48,7 +48,8 @@ export default {
     { src: '@/plugins/tools', ssr: false },
     { src: '@/plugins/axios', ssr: false },
     { src: '@/plugins/lodash', ssr: false },
-    { src: '@/plugins/element-ui', ssr: false }
+    { src: '@/plugins/element-ui', ssr: false },
+    { src: '@/plugins/seamless-scroll', ssr: false }
   ],
   /*
    ** Nuxt.js dev-modules
@@ -64,7 +65,7 @@ export default {
   modules: [
     // Doc: https://axios.nuxtjs.org/usage
     '@nuxtjs/axios',
-    '@nuxtjs/toast', 
+    '@nuxtjs/toast',
     '@/plugins/lodash'
   ],
 

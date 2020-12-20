@@ -1,13 +1,29 @@
 <template>
   <div>
+    <modal name="lowIncomeDesc" width="24.22%" height="49.17%" :pivot-y="0.4">
+      <div>
+        <p class="modal-title">
+          <span>{{ selectedPerson.name || '' }}</span>
+        </p>
+        <!-- <div class="qrcode">123123</div> -->
+        <div class="modal-content">
+          <div v-for="(k, idx) in Object.keys(selectedPerson)" :key="idx" class="listItem">
+            <div class="itemLeft">{{ mapping[k] }}</div>
+            <div class="itemRight">{{ selectedPerson[k] }}</div>
+          </div>
+        </div>
+
+        <div class="close-btn" @click="$modal.hide('lowIncomeDesc')" />
+      </div>
+    </modal>
 
     <Sidebar position="Left" full>
-      <Sidebar-item title="党员信息" :title-img="memberImg" :custom-class="['bg-long']">
+      <Sidebar-item title="党员信息" :title-img="memberImg" class="homeTopLeft">
         <div class="content">
           <Title sub-title value="沙滩村党员性别分布" />
           <PieChart
             :key="0"
-            :pieData="[
+            :pie-data="[
               {value:21, name:'男'},
               {value:9, name:'女'},
             ]"
@@ -16,49 +32,49 @@
           <Title sub-title value="沙滩村党员学习分布" />
           <PieChart
             :key="1"
-            :pieData="[
-            {value:20, name:'初中以下'},
-            {value:7, name:'高中'},
-            {value:3, name:'大专以上'},
+            :pie-data="[
+              {value:20, name:'初中以下'},
+              {value:7, name:'高中'},
+              {value:3, name:'大专以上'},
             ]"
             id-name="education-distribution"
           />
           <Title sub-title value="沙滩村党员年龄分布" />
           <PieChart
             :key="2"
-            :pieData="[
-            {value:3, name:'18-30岁'},
-            {value:1, name:'31-40岁'},
-            {value:7, name:'41-50岁'},
-            {value:4, name:'51-60岁'},
-            {value:8, name:'61-70岁'},
-            {value:5, name:'71-80岁'},
-            {value:2, name:'81-90岁'},
+            :pie-data="[
+              {value:3, name:'18-30岁'},
+              {value:1, name:'31-40岁'},
+              {value:7, name:'41-50岁'},
+              {value:4, name:'51-60岁'},
+              {value:8, name:'61-70岁'},
+              {value:5, name:'71-80岁'},
+              {value:2, name:'81-90岁'},
             ]"
             id-name="age-distribution"
           />
-          <div class="wrapper">
-            <Title sub-title value="屿头乡机关第一党支部" />
-            <Title sub-title value="屿头乡机关第二党支部" />
-            <Title sub-title value="屿头乡机关退休党支部" />
-            <Title sub-title value="屿头乡白石村党支部" />
-            <Title sub-title value="屿头乡大田村党支部" />
-            <Title sub-title value="屿头乡金廊村党支部" />
-            <Title sub-title value="屿头乡联一村党支部" />
-            <Title sub-title value="屿头乡两岸村党支部" />
-            <Title sub-title value="屿头乡沙滩村党支部" />
-            <Title sub-title value="屿头乡屿头村党支部" />
-            <Title sub-title value="屿头乡布袋山村党总支" />
-            <Title sub-title value="屿头乡三联村党总支" />
-            <Title sub-title value="屿头乡上凤村总党支" />
-            <Title sub-title value="屿头乡兴安村党总支" />
-          </div>
+          <!-- <div class="wrapper">
+            <client-only>
+              <vue-seamless-scroll :data="partyBuilding" :class-option="classOption">
+                <div v-for="(item, index) in partyBuilding" :key="index" class="list-item-title">{{ item.title }}</div>
+              </vue-seamless-scroll>
+            </client-only>
+          </div> -->
+        </div>
+      </Sidebar-item>
+      <Sidebar-item title="各党支部列表" :title-img="memberImg" class="homeBottomLeft">
+        <div class="sidebar-item-body">
+          <client-only>
+            <vue-seamless-scroll :data="partyBuilding" :class-option="classOption">
+              <div v-for="(item, index) in partyBuilding" :key="index" class="list-item-title">{{ item.title }}</div>
+            </vue-seamless-scroll>
+          </client-only>
         </div>
       </Sidebar-item>
     </Sidebar>
 
     <Sidebar position="Left" full val="448">
-      <Sidebar-item title="景区大观" :title-img="chartImg" :custom-class="['bg-long']">
+      <Sidebar-item title="景区大观" :title-img="chartImg">
         <div class="content">
           <div class="count">
             <span>柔川景区游客</span>
@@ -132,8 +148,8 @@
                   <div key="content" class="articleContent">
                     <!--  -->
                     为什么这里被称为布袋山呢? 相传，布袋和尚的出生地在浙江奉化，他四处云游来到了这里，被这里的景色所吸引便在这里长住了下来。这里的村民都非常敬爱他。为了纪念他就把村子改为了布袋坑村，叫这座山为布袋山。布袋和尚是弥勒佛的千万化身之一，他身材矮胖、满脸欢喜，平日以杖肩荷布袋云游四方，以禅机点化世人；他乐善好施、身怀绝技、除暴安良、让众生离苦得乐。一生奇事不胜枚举，高兴就卧在雪里，雪也不沾身；能够预卜吉凶和气候，天晴时，穿着高齿木屐，跑到桥上，竖膝而卧，雨天则穿上湿草鞋，在路上急急行走，表示天快下雨，每一次都很灵验，被认为是一大奇人。
-他的整个一生只做了一件事，那就是笑，笑就是他的信息，他的信条，他的经典。布袋，是独一无二的。在整个世界上，所有的人都可以被他的笑所滋养，每个人的心灵都可以被他的笑所净化，每个人都可以从他的笑容间感受到纯真的幸福。
-现今的山水画廊景区的景点有雄狮护谷、双龙戏瀑、牯潭秋月、壶中乾坤、苍山云影、九天凝碧、老僧听泉、飞阁流丹、廊桥蕙风、鼎湖秀色、弥勒朝圣、峡谷搂村等12个大景点。
+                    他的整个一生只做了一件事，那就是笑，笑就是他的信息，他的信条，他的经典。布袋，是独一无二的。在整个世界上，所有的人都可以被他的笑所滋养，每个人的心灵都可以被他的笑所净化，每个人都可以从他的笑容间感受到纯真的幸福。
+                    现今的山水画廊景区的景点有雄狮护谷、双龙戏瀑、牯潭秋月、壶中乾坤、苍山云影、九天凝碧、老僧听泉、飞阁流丹、廊桥蕙风、鼎湖秀色、弥勒朝圣、峡谷搂村等12个大景点。
 
                   </div>
                 </swiper-slide>
@@ -161,19 +177,35 @@
     </Sidebar>
 
     <Sidebar position="Right" full>
-      <Sidebar-item title="民生概览" :title-img="articleImg" :custom-class="['bg-middle']">
-
-        <transition-group name="fade-in-right" tag="div" class="content">
-          <Title key="title" sub-title value="十里红妆" />
-          <div key="content" class="content">
-            <!--  -->
-            <img src="@/assets/img/activity/1.jpg" alt="qrcode" width="100%">
-            <img src="@/assets/img/activity/2.jpg" alt="qrcode" width="100%">
-            <img src="@/assets/img/activity/3.jpg" alt="qrcode" width="100%">
-            <img src="@/assets/img/activity/4.jpg" alt="qrcode" width="100%">
-          </div>
-        </transition-group>
-
+      <Sidebar-item title="低保在册户数" :title-img="articleImg" class="homeTopRight">
+        <Title sub-title value="低保边缘户名单与总发放金额" />
+        <div class="sidebar-item-body">
+          <client-only>
+            <vue-seamless-scroll :data="lowIncomeList" :class-option="classOption">
+              <div v-for="(item, index) in lowIncomeList" :key="index" class="list-item-title">
+                <div class="listItem" @click="showDesc(item)">
+                  <div class="itemLeft">{{ item.name }}</div>
+                  <div class="itemRight">{{ item.total }}元</div>
+                </div>
+              </div>
+            </vue-seamless-scroll>
+          </client-only>
+        </div>
+      </Sidebar-item>
+      <Sidebar-item title="低保边缘在册户数" :title-img="articleImg" class="homeBottomRight">
+        <Title sub-title value="低保边缘在册户数名单与总发放金额" />
+        <div class="sidebar-item-body">
+          <client-only>
+            <vue-seamless-scroll :data="almostLowIncomeList" :class-option="classOption">
+              <div v-for="(item, index) in almostLowIncomeList" :key="index" class="list-item-title">
+                <div class="listItem" @click="showDesc(item)">
+                  <div class="itemLeft">{{ item.name }}</div>
+                  <div class="itemRight">{{ item.total }}元</div>
+                </div>
+              </div>
+            </vue-seamless-scroll>
+          </client-only>
+        </div>
       </Sidebar-item>
     </Sidebar>
 
@@ -191,21 +223,222 @@ export default {
     Title,
     PieChart
   },
-  mounted () {
-    setInterval(() => {
-      this.totalNumber++
-    }, 3000)
-
-    setInterval(() => {
-      this.currentNumber++
-    }, 3000)
-
-    setInterval(() => {
-      this.todayTotal++
-    }, 3000)
-  },
   data () {
     return {
+      selectedPerson: {},
+      partyBuilding: [
+        {
+          'title': '屿头乡机关第一党支部'
+        },
+        {
+          'title': '屿头乡机关第二党支部'
+        },
+        {
+          'title': '屿头乡机关退休党支部'
+        },
+        {
+          'title': '屿头乡白石村党支部'
+        },
+        {
+          'title': '屿头乡大田村党支部屿头乡金廊村党支部'
+        },
+        {
+          'title': '屿头乡联一村党支部'
+        },
+        {
+          'title': '屿头乡两岸村党支部'
+        },
+        {
+          'title': '屿头乡沙滩村党支部'
+        },
+        {
+          'title': '屿头乡屿头村党支部'
+        },
+        {
+          'title': '屿头乡布袋山村党总支'
+        },
+        {
+          'title': '屿头乡三联村党总支'
+        },
+        {
+          'title': '屿头乡上凤村总党支'
+        },
+        {
+          'title': '屿头乡兴安村党总支'
+        }
+      ],
+      lowIncomeList: [
+        {
+          region: '沙滩',
+          name: '卢昌森',
+          id: '332603194309151113',
+          type: '农村低保（低收入农户）',
+          total: '810',
+          time: '2020-10-01'
+        },
+        {
+          region: '沙滩',
+          name: '金仁江',
+          id: '332622196110181110',
+          type: '农村低保（低收入农户）',
+          total: '1126',
+          time: '2008-06-01'
+        },
+        {
+          region: '沙滩',
+          name: '黄天富',
+          id: '332622193304041112',
+          type: '农村低保（低收入农户）',
+          total: '810',
+          time: '2008-06-01'
+        },
+        {
+          region: '沙滩',
+          name: '陈文汉',
+          id: '332603198009221130',
+          type: '农村低保（低收入农户）',
+          total: '513',
+          time: '2011-08-30'
+        },
+        {
+          region: '沙滩',
+          name: '黄华林',
+          id: '332603196609121118',
+          type: '农村低保（低收入农户）',
+          total: '810',
+          time: '2013-09-11'
+        },
+        {
+          region: '沙滩',
+          name: '黄林福',
+          id: '332622196005051138',
+          type: '农村低保（低收入农户）',
+          total: '1016',
+          time: '2014-12-17'
+        },
+        {
+          region: '沙滩',
+          name: '黄小妙友',
+          id: '332622195108011134',
+          type: '农村低保（低收入农户）',
+          total: '1016',
+          time: '2014-12-17'
+        },
+        {
+          region: '沙滩',
+          name: '陈根福',
+          id: '332603197804071130',
+          type: '农村低保（低收入农户）',
+          total: '1749',
+          time: '2016-09-18'
+        },
+        {
+          region: '沙滩',
+          name: '黄仁富',
+          id: '332603196803291110',
+          type: '农村低保（低收入农户）',
+          total: '1110',
+          time: '2017-05-18'
+        }
+      ],
+      mapping: {
+        'region': '行政区划',
+        'name': '人员姓名',
+        'id': '身份证',
+        'type': '低保边缘户',
+        'total': '总发放金额',
+        'time': '救助日期'
+      },
+      almostLowIncomeList: [
+        {
+          region: '沙滩',
+          name: '徐香云',
+          id: '33260319500326112X',
+          type: '低保边缘户',
+          total: '100',
+          time: '2018-12-01'
+        },
+        {
+          region: '沙滩',
+          name: '黄斌',
+          id: '332603197308101118',
+          type: '低保边缘户',
+          total: '100',
+          time: '2018-12-01'
+        },
+        {
+          region: '沙滩',
+          name: '黄杏福',
+          id: '332622195901181112',
+          type: '低保边缘户',
+          total: '100',
+          time: '2017-02-17'
+        },
+        {
+          region: '沙滩',
+          name: '杨连香',
+          id: '332603196212051123',
+          type: '低保边缘户',
+          total: '100',
+          time: '2017-02-17'
+        },
+        {
+          region: '沙滩',
+          name: '黄伟',
+          id: '331003199307181115',
+          type: '低保边缘户',
+          total: '100',
+          time: '2017-02-17'
+        },
+        {
+          region: '沙滩',
+          name: '黄仁国',
+          id: '332603196311051110',
+          type: '低保边缘户',
+          total: '100',
+          time: '2017-10-17'
+        },
+        {
+          region: '沙滩',
+          name: '朱方云',
+          id: '332603196604131229',
+          type: '低保边缘户',
+          total: '100',
+          time: '2017-10-17'
+        },
+        {
+          region: '沙滩',
+          name: '黄庆元',
+          id: '331003199104201112',
+          type: '低保边缘户',
+          total: '100',
+          time: '2017-10-17'
+        },
+        {
+          region: '沙滩',
+          name: '黄菊青',
+          id: '332622193902221121',
+          type: '低保边缘户',
+          total: '100',
+          time: '2017-10-17'
+        },
+        {
+          region: '沙滩',
+          name: '黄志炳',
+          id: '332603196507121117',
+          type: '低保边缘户',
+          total: '100',
+          time: '2017-10-17'
+        },
+        {
+          region: '沙滩',
+          name: '黄红磊',
+          id: '331003200410181119',
+          type: '低保边缘户',
+          total: '100',
+          time: '2017-10-17'
+        }
+      ],
       totalNumber: 396720,
       currentNumber: 4635,
       todayTotal: 32445,
@@ -226,6 +459,49 @@ export default {
           disableOnInteraction: true
         }
       }
+    }
+  },
+  computed: {
+    classOption () {
+      return {
+        step: 0.3, // 数值越大速度滚动越快
+        limitMoveNum: 13, // 开始无缝滚动的数据量 this.dataList.length
+        hoverStop: true, // 是否开启鼠标悬停stop
+        direction: 1, // 0向下 1向上 2向左 3向右
+        openWatch: true, // 开启数据实时监控刷新dom
+        singleHeight: 0, // 单步运动停止的高度(默认值0是无缝不停止的滚动) direction => 0/1
+        singleWidth: 0, // 单步运动停止的宽度(默认值0是无缝不停止的滚动) direction => 2/3
+        waitTime: 1000 // 单步运动停止的时间(默认值1000ms)
+      }
+    }
+  },
+  mounted () {
+    // setInterval(() => {
+    //   this.totalNumber++
+    // }, 3000)
+
+    // setInterval(() => {
+    //   this.currentNumber++
+    // }, 3000)
+
+    // setInterval(() => {
+    //   this.todayTotal++
+    // }, 3000)
+  },
+  methods: {
+    showDesc (item) {
+      // this.qrcodeUrl = ''
+      // this.articleTitle = ''
+      // e && e.preventDefault()
+      this.selectedPerson = item
+      // if (!qrcode) return
+
+      // this.modalWidth = window.innerWidth / 1920 * 465
+      // this.modalHeight = window.innerHeight / 1080 * 531
+
+      // this.qrcodeUrl = qrcode
+      // this.articleTitle = title
+      this.$modal.show('lowIncomeDesc')
     }
   }
 }
@@ -468,7 +744,7 @@ export default {
 
   .wrapper {
     overflow: auto;
-    height: 350px;
+    // min-height: 350px;
   }
 
   .articleContent {
@@ -479,5 +755,30 @@ export default {
     .hHeight(300);
 
     // overflow: hidden;
+  }
+
+  .homeTopLeft {
+    flex: 13;
+    min-height: 1px;
+  }
+
+  .homeBottomLeft {
+    flex: 7;
+    min-height: 1px;
+  }
+
+  .homeTopRight {
+    flex: 1;
+    min-height: 1px;
+  }
+
+  .homeBottomRight {
+    flex: 1;
+    min-height: 1px;
+  }
+
+  .listItem {
+    display: flex;
+    justify-content: space-between;
   }
 </style>

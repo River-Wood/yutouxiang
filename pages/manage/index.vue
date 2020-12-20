@@ -1,27 +1,13 @@
 <template>
   <div>
-
-    <Sidebar position="Left" full>
-      <Sidebar-item title="标题" :title-img="articleImg" :custom-class="['bg-long']">
-        <div class="content">
-          <!--  -->
-        </div>
-      </Sidebar-item>
-    </Sidebar>
-
-    <Sidebar position="Right" full>
-      <Sidebar-item title="标题" :title-img="articleImg" :custom-class="['bg-middle']">
-
-        <transition-group name="fade-in-right" tag="div" class="content">
-          <Title key="title" sub-title value="列表" />
-          <div key="content" class="content">
-            <!--  -->
-          </div>
-        </transition-group>
-
-      </Sidebar-item>
-    </Sidebar>
-
+    <iframe
+      id="inlineFrameExample"
+      title="Inline Frame Example"
+      width="300"
+      height="200"
+      src="http://101.69.143.242:9011/jczl/a?login"
+      class="frame"
+    />
   </div>
 </template>
 
@@ -52,5 +38,13 @@ export default {
   .hHeight(300);
 
   overflow: hidden;
+}
+
+.frame {
+  position: fixed;
+  top: 90px;
+  width: 100%;
+  z-index: 1000;
+  min-height: ~"calc(100vh - 90px)";
 }
 </style>

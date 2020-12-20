@@ -16,18 +16,17 @@
       </Sidebar-item>
     </Sidebar>
 
-    <Sidebar position="Right" full>
+    <!-- <Sidebar position="Right" full>
       <Sidebar-item title="标题" :title-img="articleImg" :custom-class="['bg-middle']">
 
         <transition-group name="fade-in-right" tag="div" class="content">
           <Title key="title" sub-title value="列表" />
           <div key="content" class="content">
-            <!--  -->
           </div>
         </transition-group>
 
       </Sidebar-item>
-    </Sidebar>
+    </Sidebar> -->
 
   </div>
 </template>

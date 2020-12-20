@@ -1,13 +1,12 @@
 <template>
   <div>
 
-    <Sidebar position="Left" full>
+    <!-- <Sidebar position="Left" full>
       <Sidebar-item title="标题" :title-img="articleImg" :custom-class="['bg-long']">
         <div class="content">
-          <!--  -->
         </div>
       </Sidebar-item>
-    </Sidebar>
+    </Sidebar> -->
 
     <Sidebar position="Right" full>
       <Sidebar-item title="标题" :title-img="articleImg" :custom-class="['bg-middle']">
